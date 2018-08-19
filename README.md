@@ -1,10 +1,10 @@
 # python-big-data
-jupyter-notebook workboks to play with 
+jupyter-notebook workbooks to play with 
 
 ### Mandatory system requirements for all projects
 * [Anaconda](https://www.anaconda.com/download/#linux)
 
-### Additional requirements for particual projects
+### Additional requirements for particural projects
 * graphviz - project: **similar-names-corelations** 
 ```conda install -c conda-forge python-graphviz ```
 
