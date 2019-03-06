@@ -1,0 +1,18 @@
+{
+    "origins": [
+      {
+        "pattern":   "Księga \\w+$",
+        "titleskip": 1,
+        "headskip":  3 
+      },
+      {
+        "pattern":  "Epilog",
+        "headskip": 1
+      },
+      {
+        "pattern":  "-----",
+        "headskip": 1
+      }
+    ],
+    "scope": [1, -2, null]
+}
