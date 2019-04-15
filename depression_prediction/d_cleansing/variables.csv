@@ -1,0 +1,76 @@
+name,detail,ignore,dummy,target
+surveyid,Individual Identifier,True,False,False
+village,Village Identifier,True,False,False
+survey_date,Date of Interview (days since Jan1 of first year),True,False,False
+femaleres,Female respondent,False,True,False
+age,Age (respondent),False,False,False
+married,Marital status (respondent),False,True,False
+children,Number of children,False,False,False
+hhsize,Household size,False,False,False
+edu,Years of education completed (respondent),False,False,False
+hh_children,Number of children <=18 or younger in Household,False,False,False
+hh_totalmembers,Household size,False,False,False
+cons_nondurable,Non-durable expenditure (USD),False,False,False
+asset_livestock,Value of livestock (USD),False,False,False
+asset_durable,Value of durable goods (USD),False,False,False
+asset_phone,Value of cell phone (USD),False,False,False
+asset_savings,Value of savings (USD),False,False,False
+asset_land_owned_total,Land owned (acres),False,False,False
+asset_niceroof,Has non-thatched roof (dummy),False,False,False
+cons_allfood,Food total (USD),False,False,False
+cons_ownfood,Food own production (USD),False,False,False
+cons_alcohol,Alcohol (USD),False,False,False
+cons_tobacco,Tobacco (USD),False,False,False
+cons_med_total,Medical expenditure past month (USD),False,False,False
+cons_med_children,"Medical expenditure, children (USD)",False,False,False
+cons_ed,Education expenditure (USD),False,False,False
+cons_social,Social expenditure (USD),False,False,False
+cons_other,Other expenditure (USD),False,False,False
+ent_wagelabor,Wage labor primary income (dummy),False,False,False
+ent_ownfarm,Own farm primary income (dummy),False,False,False
+ent_business,Non-ag business primary income (dummy),False,False,False
+ent_nonagbusiness,Non-agricultural business owner (dummy),False,False,False
+ent_employees,Number of employees working in non-ag business,False,False,False
+ent_nonag_revenue,"Non-ag business revenue, monthly (USD)",False,False,False
+ent_nonag_flowcost,"Non-ag business flow expenses, monthly (USD)",False,False,False
+ent_farmrevenue,"Farm revenue, monthly (USD)",False,False,False
+ent_farmexpenses,"Farm flow expenses, monthly (USD)",False,False,False
+ent_animalstockrev,"Livestock sales and meat revenue, monthly (USD)",False,False,False
+ent_total_cost,"Total expenses, monthly (USD)",False,False,False
+fs_adskipm_often,"Meals skipped (adults, \# last month)",False,False,False
+fs_adwholed_often,"Whole days without food (adults, \# last month)",False,False,False
+fs_chskipm_often,"Meals skipped (children, \# last month)",False,False,False
+fs_chwholed_often,"Whole days without food (children, \# last month)",False,False,False
+fs_meat,Number of times ate meat or fish (last week),False,False,False
+fs_enoughtom,Enough food in the house for tomorrow? (dummy),False,False,False
+fs_sleephun,"Respondent slept hungry (last week, dummy)",False,False,False
+med_expenses_hh_ep,"Medical expenses per episode, entire HH (USD)",False,False,False
+med_expenses_sp_ep,"Medical expenses per episode, spouses (USD)",False,False,False
+med_expenses_child_ep,"Medical expenses per episode, children (USD)",False,False,False
+med_portion_sickinjured,Proportion of household sick/injured (1 month),False,False,False
+med_port_sick_child,Proportion of children sick/injured (1 month),False,False,False
+med_afford_port,Proportion of sick/injured who could afford treatment,False,False,False
+med_sickdays_hhave,Average number of sick days per HH member,False,False,False
+med_healthconsult,Propotion of illnesses where doctor was consulted,False,False,False
+med_vacc_newborns,Number of newborns vaccinated,False,False,False
+med_child_check,Proportion of children <14 getting checkup (6 months),False,False,False
+med_u5_deaths,Proportion of children <5 who died (1 year),False,False,False
+ed_expenses,Education expenditure past month (USD),False,False,False
+ed_expenses_perkid,Education expenditure per child past month (USD),False,False,False
+ed_schoolattend,Proportion of school-aged children in school,False,False,False
+ed_sch_missedpc,School days missed past month (per child),False,False,False
+ed_work_act_pc,Income-generating activities per school-age child >6,False,False,False
+labor_primary,Casual or Wage Labor Primary Source of Income,False,False,False
+wage_expenditures,Expenditure on wages for HH enterprise,False,False,False
+durable_investment,Durable Investments,False,False,False
+nondurable_investment,Non-durable Investments,False,False,False
+given_mpesa,Sent money using M-Pesa,True,False,False
+amount_given_mpesa,Amount sent using M-Pesa,True,False,False
+received_mpesa,Received money using M-Pesa,True,False,False
+amount_received_mpesa,Amount received using M-Pesa,True,False,False
+net_mpesa,Net Remittances using M-Pesa,True,False,False
+saved_mpesa,Saved money using M-Pesa,True,False,False
+amount_saved_mpesa,Amount saved using M-Pesa,True,False,False
+early_survey,Psychology survey in 1st wave (dummy),True,False,False
+depressed,Meets epidemiological threshold for moderate depression (dummy),False,False,True
+day_of_week,Day of week of survey (0=Sunday),False,True,False

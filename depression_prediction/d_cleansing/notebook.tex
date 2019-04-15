@@ -1,0 +1,1054 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{data\_cleansing}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display}\PY{p}{,} \PY{n}{HTML}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{expl} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Variable\PYZus{}explanations.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index\PYZus{}col}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{expl}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:}                                                         detail
+        name                                                          
+        surveyid                                 Individual Identifier
+        village                                     Village Identifier
+        survey\_date  Date of Interview (days since Jan1 of first year)
+        femaleres                                    Female respondent
+        age                                           Age (respondent)
+        married                            Marital status (respondent)
+        children                                    Number of children
+        hhsize                                          Household size
+        edu                  Years of education completed (respondent)
+        hh\_children    Number of children <=18 or younger in Household
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{variables} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}p\PYZgt{}\PYZlt{}b\PYZgt{}}\PY{l+s+si}{\PYZob{}label\PYZcb{}}\PY{l+s+s1}{\PYZlt{}/b\PYZgt{}\PYZlt{}/p\PYZgt{}}\PY{l+s+si}{\PYZob{}row.detail\PYZcb{}}\PY{l+s+s1}{\PYZlt{}br\PYZgt{}}\PY{l+s+s1}{\PYZsq{}} \PY{k}{for} \PY{n}{label}\PY{p}{,} \PY{n}{row} \PY{o+ow}{in} \PY{n}{expl}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{HTML}\PY{p}{(}\PY{n}{variables}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{expl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{expl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{expl}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{endswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mpesa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+        \PY{n}{expl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{village}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{surveyid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{survey\PYZus{}date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{early\PYZus{}survey}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{expl}\PY{p}{[}\PY{n}{expl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{k+kc}{False}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:}                                                                     detail  \textbackslash{}
+        name                                                                         
+        femaleres                                                Female respondent   
+        age                                                       Age (respondent)   
+        married                                        Marital status (respondent)   
+        children                                                Number of children   
+        hhsize                                                      Household size   
+        edu                              Years of education completed (respondent)   
+        hh\_children                Number of children <=18 or younger in Household   
+        hh\_totalmembers                                             Household size   
+        cons\_nondurable                              Non-durable expenditure (USD)   
+        asset\_livestock                                   Value of livestock (USD)   
+        asset\_durable                                 Value of durable goods (USD)   
+        asset\_phone                                      Value of cell phone (USD)   
+        asset\_savings                                       Value of savings (USD)   
+        asset\_land\_owned\_total                                  Land owned (acres)   
+        asset\_niceroof                               Has non-thatched roof (dummy)   
+        cons\_allfood                                              Food total (USD)   
+        cons\_ownfood                                     Food own production (USD)   
+        cons\_alcohol                                                 Alcohol (USD)   
+        cons\_tobacco                                                 Tobacco (USD)   
+        cons\_med\_total                        Medical expenditure past month (USD)   
+        cons\_med\_children                      Medical expenditure, children (USD)   
+        cons\_ed                                        Education expenditure (USD)   
+        cons\_social                                       Social expenditure (USD)   
+        cons\_other                                         Other expenditure (USD)   
+        ent\_wagelabor                            Wage labor primary income (dummy)   
+        ent\_ownfarm                                Own farm primary income (dummy)   
+        ent\_business                        Non-ag business primary income (dummy)   
+        ent\_nonagbusiness                  Non-agricultural business owner (dummy)   
+        ent\_employees               Number of employees working in non-ag business   
+        ent\_nonag\_revenue                   Non-ag business revenue, monthly (USD)   
+        {\ldots}                                                                    {\ldots}   
+        ent\_total\_cost                               Total expenses, monthly (USD)   
+        fs\_adskipm\_often                     Meals skipped (adults, \textbackslash{}\# last month)   
+        fs\_adwholed\_often          Whole days without food (adults, \textbackslash{}\# last month)   
+        fs\_chskipm\_often                   Meals skipped (children, \textbackslash{}\# last month)   
+        fs\_chwholed\_often        Whole days without food (children, \textbackslash{}\# last month)   
+        fs\_meat                       Number of times ate meat or fish (last week)   
+        fs\_enoughtom                Enough food in the house for tomorrow? (dummy)   
+        fs\_sleephun                     Respondent slept hungry (last week, dummy)   
+        med\_expenses\_hh\_ep           Medical expenses per episode, entire HH (USD)   
+        med\_expenses\_sp\_ep             Medical expenses per episode, spouses (USD)   
+        med\_expenses\_child\_ep         Medical expenses per episode, children (USD)   
+        med\_portion\_sickinjured     Proportion of household sick/injured (1 month)   
+        med\_port\_sick\_child          Proportion of children sick/injured (1 month)   
+        med\_afford\_port          Proportion of sick/injured who could afford tr{\ldots}   
+        med\_sickdays\_hhave               Average number of sick days per HH member   
+        med\_healthconsult        Propotion of illnesses where doctor was consulted   
+        med\_vacc\_newborns                            Number of newborns vaccinated   
+        med\_child\_check          Proportion of children <14 getting checkup (6 {\ldots}   
+        med\_u5\_deaths                  Proportion of children <5 who died (1 year)   
+        ed\_expenses                         Education expenditure past month (USD)   
+        ed\_expenses\_perkid        Education expenditure per child past month (USD)   
+        ed\_schoolattend               Proportion of school-aged children in school   
+        ed\_sch\_missedpc                  School days missed past month (per child)   
+        ed\_work\_act\_pc           Income-generating activities per school-age ch{\ldots}   
+        labor\_primary                Casual or Wage Labor Primary Source of Income   
+        wage\_expenditures                   Expenditure on wages for HH enterprise   
+        durable\_investment                                     Durable Investments   
+        nondurable\_investment                              Non-durable Investments   
+        depressed                Meets epidemiological threshold for moderate d{\ldots}   
+        day\_of\_week                               Day of week of survey (0=Sunday)   
+        
+                                 ignore  
+        name                             
+        femaleres                 False  
+        age                       False  
+        married                   False  
+        children                  False  
+        hhsize                    False  
+        edu                       False  
+        hh\_children               False  
+        hh\_totalmembers           False  
+        cons\_nondurable           False  
+        asset\_livestock           False  
+        asset\_durable             False  
+        asset\_phone               False  
+        asset\_savings             False  
+        asset\_land\_owned\_total    False  
+        asset\_niceroof            False  
+        cons\_allfood              False  
+        cons\_ownfood              False  
+        cons\_alcohol              False  
+        cons\_tobacco              False  
+        cons\_med\_total            False  
+        cons\_med\_children         False  
+        cons\_ed                   False  
+        cons\_social               False  
+        cons\_other                False  
+        ent\_wagelabor             False  
+        ent\_ownfarm               False  
+        ent\_business              False  
+        ent\_nonagbusiness         False  
+        ent\_employees             False  
+        ent\_nonag\_revenue         False  
+        {\ldots}                         {\ldots}  
+        ent\_total\_cost            False  
+        fs\_adskipm\_often          False  
+        fs\_adwholed\_often         False  
+        fs\_chskipm\_often          False  
+        fs\_chwholed\_often         False  
+        fs\_meat                   False  
+        fs\_enoughtom              False  
+        fs\_sleephun               False  
+        med\_expenses\_hh\_ep        False  
+        med\_expenses\_sp\_ep        False  
+        med\_expenses\_child\_ep     False  
+        med\_portion\_sickinjured   False  
+        med\_port\_sick\_child       False  
+        med\_afford\_port           False  
+        med\_sickdays\_hhave        False  
+        med\_healthconsult         False  
+        med\_vacc\_newborns         False  
+        med\_child\_check           False  
+        med\_u5\_deaths             False  
+        ed\_expenses               False  
+        ed\_expenses\_perkid        False  
+        ed\_schoolattend           False  
+        ed\_sch\_missedpc           False  
+        ed\_work\_act\_pc            False  
+        labor\_primary             False  
+        wage\_expenditures         False  
+        durable\_investment        False  
+        nondurable\_investment     False  
+        depressed                 False  
+        day\_of\_week               False  
+        
+        [64 rows x 2 columns]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{expl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dummy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}
+         \PY{n}{expl}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:}                                                         detail  ignore  dummy
+         name                                                                         
+         surveyid                                 Individual Identifier    True  False
+         village                                     Village Identifier    True  False
+         survey\_date  Date of Interview (days since Jan1 of first year)    True  False
+         femaleres                                    Female respondent   False  False
+         age                                           Age (respondent)   False  False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{expl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{femaleres}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{married}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{day\PYZus{}of\PYZus{}week}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dummy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{selection} \PY{o}{=} \PY{n}{expl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{detail}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{contains}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dummy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{selection}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} name
+         saved\_mpesa           False
+         amount\_saved\_mpesa    False
+         early\_survey           True
+         depressed              True
+         day\_of\_week           False
+         Name: detail, dtype: bool
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{expl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}
+         \PY{n}{expl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{depressed}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{expl}\PY{p}{[}\PY{n}{expl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:}                                                       detail  ignore  dummy  \textbackslash{}
+         name                                                                          
+         depressed  Meets epidemiological threshold for moderate d{\ldots}   False  False   
+         
+                    target  
+         name               
+         depressed    True  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{expl}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{variables.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{variables} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{variables.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{variables}\PY{o}{.}\PY{n}{dtypes}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} name      object
+         detail    object
+         ignore      bool
+         dummy       bool
+         target      bool
+         dtype: object
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{relevant\PYZus{}columns} \PY{o}{=} \PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{o}{\PYZti{}}\PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+         \PY{n}{category\PYZus{}columns} \PY{o}{=} \PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dummy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+         \PY{n}{target\PYZus{}column} \PY{o}{=} \PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{squeeze}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{target\PYZus{}column}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} 'depressed'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{train.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{usecols}\PY{o}{=}\PY{n}{relevant\PYZus{}columns}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{missing} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{n}{missing}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:}       hh\_totalmembers  cons\_alcohol  cons\_tobacco  cons\_med\_children  \textbackslash{}
+         0                 NaN      0.000000      0.000000                NaN   
+         1                 NaN      0.000000      0.000000                NaN   
+         2                 NaN      0.000000      0.000000                NaN   
+         3                 4.0      0.000000      0.000000           0.960922   
+         4                 6.0      0.000000      0.000000           0.800768   
+         5                 8.0           NaN      5.582501           0.000000   
+         6                 3.0      0.000000      0.000000           0.160154   
+         7                 4.0      0.000000      0.000000           0.000000   
+         8                 9.0      0.000000      0.000000           0.000000   
+         9                 NaN      0.000000      0.000000                NaN   
+         10                NaN      0.000000      0.000000                NaN   
+         11                3.0      0.000000      0.000000           0.000000   
+         12                6.0      0.000000      0.000000          23.222286   
+         13                6.0      0.000000      4.884688           0.000000   
+         14                2.0      0.000000      0.000000                NaN   
+         15                5.0      0.000000           NaN           0.000000   
+         16                5.0      0.000000      0.000000           0.000000   
+         17                NaN      0.000000      0.000000                NaN   
+         18                NaN      0.000000      0.000000                NaN   
+         19                4.0      0.000000      0.000000           0.000000   
+         20                NaN      0.000000      0.000000                NaN   
+         21                1.0      0.000000      4.884688                NaN   
+         22                5.0      0.000000      0.000000           6.085841   
+         23                9.0      0.000000      0.000000           0.000000   
+         24                NaN      0.000000      0.000000                NaN   
+         25                5.0      0.000000      0.000000           0.000000   
+         26                NaN      0.000000      0.000000                NaN   
+         27                5.0      0.000000      0.000000           0.000000   
+         28                NaN      0.000000      0.000000                NaN   
+         29                NaN      0.000000      0.000000                NaN   
+         {\ldots}               {\ldots}           {\ldots}           {\ldots}                {\ldots}   
+         1113              4.0      0.000000      0.000000           0.000000   
+         1114             11.0     34.890629     20.934376           0.000000   
+         1115              7.0     27.912502      0.000000           0.000000   
+         1116              4.0      0.000000      0.000000           6.406148   
+         1117              4.0      0.000000      0.000000           4.003842   
+         1118              5.0      3.489063      6.699000           0.000000   
+         1119              NaN      0.000000      0.000000                NaN   
+         1120              8.0      0.000000      0.000000           0.000000   
+         1121              8.0      0.000000      0.000000           0.000000   
+         1122              4.0      0.000000      2.930813           0.000000   
+         1123              4.0      0.000000      0.000000           0.320307   
+         1124              4.0           NaN           NaN           0.000000   
+         1125              7.0      0.000000      0.000000           0.000000   
+         1126              5.0      0.000000      0.000000           0.000000   
+         1127              2.0      0.000000      0.000000                NaN   
+         1128              2.0      0.000000      0.000000           0.000000   
+         1129              2.0      0.000000      0.000000                NaN   
+         1130              7.0           NaN      4.884688           0.000000   
+         1131              4.0      0.000000      0.000000           0.000000   
+         1132              7.0      0.000000      0.000000           0.000000   
+         1133              NaN      0.000000      0.000000                NaN   
+         1134              NaN      0.000000      0.000000                NaN   
+         1135              3.0      0.000000      0.000000           0.000000   
+         1136              3.0      0.000000      0.000000           0.000000   
+         1137              3.0      0.000000      0.000000           2.402306   
+         1138              NaN      0.000000      0.000000                NaN   
+         1139              2.0     20.934376      4.186875                NaN   
+         1140              7.0      0.000000      0.000000           0.000000   
+         1141              NaN      0.000000      0.000000                NaN   
+         1142              4.0      0.000000      0.000000                NaN   
+         
+               fs\_chskipm\_often  fs\_chwholed\_often  fs\_meat  fs\_enoughtom  fs\_sleephun  \textbackslash{}
+         0                  NaN                NaN      NaN           NaN          NaN   
+         1                  NaN                NaN      NaN           NaN          NaN   
+         2                  NaN                NaN      NaN           NaN          NaN   
+         3                  0.0                0.0      3.0           1.0          1.0   
+         4                  0.0                0.0      2.0           0.0          0.0   
+         5                  7.5                0.0      1.0           1.0          1.0   
+         6                 20.0                0.0      1.0           0.0          1.0   
+         7                  0.0                0.0      4.0           1.0          0.0   
+         8                  3.0                0.0      4.0           1.0          0.0   
+         9                  NaN                NaN      NaN           NaN          NaN   
+         10                 NaN                NaN      NaN           NaN          NaN   
+         11                 0.0                0.0      3.0           0.0          0.0   
+         12                 3.0                0.0      4.0           0.0          1.0   
+         13                 0.0                0.0      4.0           1.0          0.0   
+         14                 NaN                NaN      3.0           1.0          0.0   
+         15                 3.0                0.0      7.0           0.0          0.0   
+         16                 0.0                0.0      4.0           1.0          0.0   
+         17                 NaN                NaN      NaN           NaN          NaN   
+         18                 NaN                NaN      NaN           NaN          NaN   
+         19                 0.0                0.0      1.0           0.0          1.0   
+         20                 NaN                NaN      NaN           NaN          NaN   
+         21                 NaN                NaN      3.0           0.0          1.0   
+         22                 3.0                0.0      3.0           0.0          0.0   
+         23                 1.0                0.0      6.0           1.0          0.0   
+         24                 NaN                NaN      NaN           NaN          NaN   
+         25                 0.0                0.0      5.0           0.0          0.0   
+         26                 NaN                NaN      NaN           NaN          NaN   
+         27                 0.0                0.0      2.0           0.0          1.0   
+         28                 NaN                NaN      NaN           NaN          NaN   
+         29                 NaN                NaN      NaN           NaN          NaN   
+         {\ldots}                {\ldots}                {\ldots}      {\ldots}           {\ldots}          {\ldots}   
+         1113               7.5                0.0      0.0           0.0          1.0   
+         1114               7.5                0.0      7.0           0.0          0.0   
+         1115               0.0                0.0      4.0           0.0          0.0   
+         1116               3.0                0.0      4.0           0.0          1.0   
+         1117               0.0                0.0      3.0           0.0          0.0   
+         1118               0.0                0.0      7.0           1.0          0.0   
+         1119               NaN                NaN      NaN           NaN          NaN   
+         1120              20.0                0.0      3.0           0.0          0.0   
+         1121              20.0                0.0      4.0           0.0          1.0   
+         1122               0.0                0.0      1.0           0.0          0.0   
+         1123               7.5                0.0      1.0           0.0          1.0   
+         1124               0.0                0.0     14.0           1.0          0.0   
+         1125               0.0                0.0      1.0           0.0          0.0   
+         1126               7.5                0.0      3.0           1.0          0.0   
+         1127               NaN                NaN      7.0           1.0          0.0   
+         1128               0.0                0.0      5.0           1.0          0.0   
+         1129               NaN                NaN      0.0           1.0          0.0   
+         1130               1.0                0.0      1.0           0.0          1.0   
+         1131               0.0                0.0      4.0           0.0          0.0   
+         1132               0.0                0.0      2.0           0.0          0.0   
+         1133               NaN                NaN      NaN           NaN          NaN   
+         1134               NaN                NaN      NaN           NaN          NaN   
+         1135               0.0                0.0      0.0           1.0          0.0   
+         1136               0.0                0.0      2.0           1.0          0.0   
+         1137               0.0                0.0      2.0           0.0          0.0   
+         1138               NaN                NaN      NaN           NaN          NaN   
+         1139               NaN                NaN      1.0           0.0          0.0   
+         1140               0.0                0.0      4.0           1.0          0.0   
+         1141               NaN                NaN      NaN           NaN          NaN   
+         1142               NaN                NaN      1.0           1.0          0.0   
+         
+               med\_expenses\_hh\_ep  {\ldots}  med\_port\_sick\_child  med\_afford\_port  \textbackslash{}
+         0                    NaN  {\ldots}                  NaN              NaN   
+         1                    NaN  {\ldots}                  NaN              NaN   
+         2                    NaN  {\ldots}                  NaN              NaN   
+         3                    NaN  {\ldots}             0.000000              NaN   
+         4                    NaN  {\ldots}             0.250000         0.500000   
+         5               1.601537  {\ldots}             0.000000         1.000000   
+         6               0.053385  {\ldots}             1.000000         0.333333   
+         7               0.800768  {\ldots}             0.500000         1.000000   
+         8                    NaN  {\ldots}             0.142857         1.000000   
+         9                    NaN  {\ldots}                  NaN              NaN   
+         10                   NaN  {\ldots}                  NaN              NaN   
+         11              5.605380  {\ldots}             0.500000         0.500000   
+         12             10.249837  {\ldots}             1.000000         1.000000   
+         13                   NaN  {\ldots}             0.500000         0.500000   
+         14              2.802690  {\ldots}                  NaN         1.000000   
+         15              1.681614  {\ldots}             0.500000         1.000000   
+         16                   NaN  {\ldots}             0.666667         1.000000   
+         17                   NaN  {\ldots}                  NaN              NaN   
+         18                   NaN  {\ldots}                  NaN              NaN   
+         19                   NaN  {\ldots}             0.000000              NaN   
+         20                   NaN  {\ldots}                  NaN              NaN   
+         21              2.562459  {\ldots}                  NaN         1.000000   
+         22              2.178090  {\ldots}             1.000000         0.400000   
+         23              1.521460  {\ldots}             0.000000         0.500000   
+         24                   NaN  {\ldots}                  NaN              NaN   
+         25                   NaN  {\ldots}             0.000000         1.000000   
+         26                   NaN  {\ldots}                  NaN              NaN   
+         27                   NaN  {\ldots}             0.000000              NaN   
+         28                   NaN  {\ldots}                  NaN              NaN   
+         29                   NaN  {\ldots}                  NaN              NaN   
+         {\ldots}                  {\ldots}  {\ldots}                  {\ldots}              {\ldots}   
+         1113            1.201153  {\ldots}             0.333333         0.500000   
+         1114                 NaN  {\ldots}             0.000000         0.000000   
+         1115            0.827461  {\ldots}             0.800000         0.833333   
+         1116           26.024977  {\ldots}             1.000000         0.750000   
+         1117                 NaN  {\ldots}             1.000000         1.000000   
+         1118            1.601537  {\ldots}             0.333333         1.000000   
+         1119                 NaN  {\ldots}                  NaN              NaN   
+         1120            3.283151  {\ldots}             0.400000         1.000000   
+         1121            0.640615  {\ldots}             0.166667         0.666667   
+         1122                 NaN  {\ldots}             0.000000              NaN   
+         1123                 NaN  {\ldots}             0.500000         1.000000   
+         1124                 NaN  {\ldots}             0.000000         1.000000   
+         1125                 NaN  {\ldots}             0.000000              NaN   
+         1126            2.001921  {\ldots}             0.333333         1.000000   
+         1127            0.640615  {\ldots}                  NaN         1.000000   
+         1128            8.808454  {\ldots}             1.000000         1.000000   
+         1129            0.800768  {\ldots}                  NaN         1.000000   
+         1130            1.201153  {\ldots}             0.000000         0.500000   
+         1131            0.600576  {\ldots}             1.000000         1.000000   
+         1132            0.854153  {\ldots}             0.400000         1.000000   
+         1133                 NaN  {\ldots}                  NaN              NaN   
+         1134                 NaN  {\ldots}                  NaN              NaN   
+         1135                 NaN  {\ldots}             1.000000         1.000000   
+         1136                 NaN  {\ldots}             1.000000         0.500000   
+         1137                 NaN  {\ldots}             1.000000         1.000000   
+         1138                 NaN  {\ldots}                  NaN              NaN   
+         1139            4.003842  {\ldots}                  NaN         1.000000   
+         1140                 NaN  {\ldots}             0.400000         1.000000   
+         1141                 NaN  {\ldots}                  NaN              NaN   
+         1142           10.249837  {\ldots}                  NaN         1.000000   
+         
+               med\_sickdays\_hhave  med\_healthconsult  med\_u5\_deaths  ed\_expenses  \textbackslash{}
+         0                    NaN                NaN            NaN          NaN   
+         1                    NaN                NaN            NaN          NaN   
+         2                    NaN                NaN            NaN          NaN   
+         3               0.000000                NaN            NaN    20.179367   
+         4               1.166667           1.000000            NaN    27.226130   
+         5               0.875000           0.000000            NaN    32.030739   
+         6               0.000000           0.000000            NaN     6.406148   
+         7               0.250000           1.000000            NaN    34.272892   
+         8               0.111111           0.000000            NaN   181.614290   
+         9                    NaN                NaN            NaN          NaN   
+         10                   NaN                NaN            NaN          NaN   
+         11              5.666666           0.500000            NaN   168.161390   
+         12              1.833333           1.000000            NaN    89.686073   
+         13              0.166667           0.000000            NaN    80.076851   
+         14              5.000000           1.000000            NaN          NaN   
+         15              1.400000           1.000000            NaN     0.000000   
+         16              2.200000           0.666667            NaN     0.000000   
+         17                   NaN                NaN            NaN          NaN   
+         18                   NaN                NaN            NaN          NaN   
+         19              0.000000                NaN            NaN    12.652143   
+         20                   NaN                NaN            NaN          NaN   
+         21              6.000000           1.000000            NaN          NaN   
+         22              1.800000           0.400000            0.5    31.870586   
+         23              1.888889           1.000000            NaN   148.942950   
+         24                   NaN                NaN            NaN          NaN   
+         25              0.600000           1.000000            NaN    16.015369   
+         26                   NaN                NaN            NaN          NaN   
+         27              0.000000                NaN            1.0    57.655331   
+         28                   NaN                NaN            NaN          NaN   
+         29                   NaN                NaN            NaN          NaN   
+         {\ldots}                  {\ldots}                {\ldots}            {\ldots}          {\ldots}   
+         1113            0.000000           0.000000            NaN     3.203074   
+         1114            0.000000           0.000000            NaN   269.058230   
+         1115            0.285714           0.333333            NaN    89.686073   
+         1116            8.250000           1.000000            NaN    40.358734   
+         1117            0.000000           1.000000            NaN    14.413833   
+         1118            1.400000           1.000000            NaN     6.406148   
+         1119                 NaN                NaN            NaN          NaN   
+         1120            1.250000           0.250000            NaN    19.218445   
+         1121            0.000000           0.333333            NaN    41.639961   
+         1122            0.000000                NaN            NaN     0.000000   
+         1123            0.000000           1.000000            NaN          NaN   
+         1124            2.500000           1.000000            NaN          NaN   
+         1125            0.000000                NaN            NaN     0.000000   
+         1126            1.400000           1.000000            NaN    21.460596   
+         1127            0.000000           0.500000            NaN          NaN   
+         1128           18.500000           0.500000            NaN     0.000000   
+         1129            1.000000           0.000000            NaN          NaN   
+         1130            1.428572           0.000000            NaN    17.296600   
+         1131            0.000000           0.250000            NaN     0.000000   
+         1132            0.428571           1.000000            NaN   480.461090   
+         1133                 NaN                NaN            NaN          NaN   
+         1134                 NaN                NaN            NaN          NaN   
+         1135            1.333333           1.000000            0.5          NaN   
+         1136            2.333333           0.500000            NaN    28.827665   
+         1137            0.000000           1.000000            NaN     0.000000   
+         1138                 NaN                NaN            NaN          NaN   
+         1139            3.500000           1.000000            NaN          NaN   
+         1140            0.714286           1.000000            NaN    35.073662   
+         1141                 NaN                NaN            NaN          NaN   
+         1142            7.000000           1.000000            NaN          NaN   
+         
+               ed\_expenses\_perkid  ed\_schoolattend  ed\_sch\_missedpc  ed\_work\_act\_pc  
+         0                    NaN              NaN              NaN             NaN  
+         1                    NaN              NaN              NaN             NaN  
+         2                    NaN              NaN              NaN             NaN  
+         3              10.089684         0.500000         1.500000        0.000000  
+         4               6.806532         0.750000         1.750000        1.250000  
+         5               6.406148         0.800000         0.000000        1.500000  
+         6               6.406148         1.000000         0.000000        1.000000  
+         7              17.136446         0.500000         0.000000             NaN  
+         8              30.269049         0.666667         0.166667        1.000000  
+         9                    NaN              NaN              NaN             NaN  
+         10                   NaN              NaN              NaN             NaN  
+         11             84.080696         1.000000         3.500000        1.000000  
+         12             29.895357         1.000000         0.666667        0.333333  
+         13             26.692284         0.666667         0.000000        0.000000  
+         14                   NaN              NaN              NaN             NaN  
+         15              0.000000         0.000000         0.000000             NaN  
+         16              0.000000         1.000000         2.500000        0.500000  
+         17                   NaN              NaN              NaN             NaN  
+         18                   NaN              NaN              NaN             NaN  
+         19              6.326071         1.000000         0.000000        0.000000  
+         20                   NaN              NaN              NaN             NaN  
+         21                   NaN              NaN              NaN             NaN  
+         22             10.623528         1.000000         2.000000        1.000000  
+         23             37.235737         1.000000         0.000000        2.000000  
+         24                   NaN              NaN              NaN             NaN  
+         25              5.338457         0.333333         0.000000        0.000000  
+         26                   NaN              NaN              NaN             NaN  
+         27             19.218445         1.000000         0.000000        0.666667  
+         28                   NaN              NaN              NaN             NaN  
+         29                   NaN              NaN              NaN             NaN  
+         {\ldots}                  {\ldots}              {\ldots}              {\ldots}             {\ldots}  
+         1113            1.601537         1.000000         0.500000        0.000000  
+         1114           38.436890         0.571429         0.000000        1.333333  
+         1115           22.421518         0.750000         0.500000        1.666667  
+         1116           20.179367         0.500000         2.500000        0.000000  
+         1117           14.413833         1.000000         0.000000        0.000000  
+         1118            3.203074         0.500000         1.000000        0.000000  
+         1119                 NaN              NaN              NaN             NaN  
+         1120            3.843689         0.800000         0.600000        0.750000  
+         1121            8.327992         0.800000         0.000000        2.000000  
+         1122            0.000000         0.000000         0.000000             NaN  
+         1123                 NaN              NaN              NaN             NaN  
+         1124                 NaN              NaN              NaN             NaN  
+         1125            0.000000         1.000000         0.000000        0.250000  
+         1126           10.730298         1.000000         0.000000        0.000000  
+         1127                 NaN              NaN              NaN             NaN  
+         1128            0.000000         1.000000         7.000000             NaN  
+         1129                 NaN              NaN              NaN             NaN  
+         1130            5.765533         1.000000         2.000000        0.666667  
+         1131            0.000000         0.000000         0.000000             NaN  
+         1132           96.092216         0.800000         0.400000        0.500000  
+         1133                 NaN              NaN              NaN             NaN  
+         1134                 NaN              NaN              NaN             NaN  
+         1135                 NaN              NaN              NaN             NaN  
+         1136           14.413833         1.000000         3.500000        0.000000  
+         1137            0.000000         0.000000         0.000000             NaN  
+         1138                 NaN              NaN              NaN             NaN  
+         1139                 NaN              NaN              NaN             NaN  
+         1140            8.768415         0.750000         0.500000        0.000000  
+         1141                 NaN              NaN              NaN             NaN  
+         1142                 NaN              NaN              NaN             NaN  
+         
+         [1143 rows x 23 columns]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{variables}\PY{p}{[}\PY{n}{variables}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isin}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hhsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hhtotalmembers}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:}      name          detail  ignore  dummy  target
+         7  hhsize  Household size   False  False   False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n+nb}{all}\PY{p}{(}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hhsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hh\PYZus{}totalmembers}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZca{}} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hh\PYZus{}totalmembers}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{df}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hh\PYZus{}totalmembers}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{k}{def} \PY{n+nf}{missing\PYZus{}stats}\PY{p}{(}\PY{n}{dataframe}\PY{p}{,} \PY{n}{grouping}\PY{p}{)}\PY{p}{:}
+             \PY{n}{na\PYZus{}columns} \PY{o}{=} \PY{n}{dataframe}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
+             \PY{n}{na\PYZus{}subframe} \PY{o}{=} \PY{n}{dataframe}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{n}{na\PYZus{}columns}\PY{p}{]}
+             
+             \PY{k}{def} \PY{n+nf}{na}\PY{p}{(}\PY{n}{series}\PY{p}{)}\PY{p}{:} \PY{k}{return} \PY{n}{series}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{series}\PY{p}{)}
+             \PY{k}{def} \PY{n+nf}{zero}\PY{p}{(}\PY{n}{series}\PY{p}{)}\PY{p}{:} \PY{k}{return} \PY{p}{(}\PY{n}{series} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{series}\PY{p}{)}
+             \PY{k}{def} \PY{n+nf}{both}\PY{p}{(}\PY{n}{series}\PY{p}{)}\PY{p}{:} \PY{k}{return} \PY{n}{na}\PY{p}{(}\PY{n}{series}\PY{p}{)} \PY{o}{+} \PY{n}{zero}\PY{p}{(}\PY{n}{series}\PY{p}{)}
+             
+             \PY{n}{grouped} \PY{o}{=} \PY{n}{na\PYZus{}subframe}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{n}{dataframe}\PY{p}{[}\PY{n}{grouping}\PY{p}{]}\PY{p}{)}
+             \PY{n}{aggregated} \PY{o}{=} \PY{n}{grouped}\PY{o}{.}\PY{n}{agg}\PY{p}{(}\PY{p}{[}\PY{n}{na}\PY{p}{,} \PY{n}{zero}\PY{p}{,} \PY{n}{both}\PY{p}{]}\PY{p}{)}
+             \PY{n}{totals} \PY{o}{=} \PY{n}{na\PYZus{}subframe}\PY{o}{.}\PY{n}{agg}\PY{p}{(}\PY{p}{[}\PY{n}{na}\PY{p}{,} \PY{n}{zero}\PY{p}{,} \PY{n}{both}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{unstack}\PY{p}{(}\PY{p}{)}
+             \PY{n}{totals}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}
+             \PY{n}{aggregated} \PY{o}{=} \PY{n}{aggregated}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{totals}\PY{p}{)}
+             \PY{k}{return} \PY{n}{aggregated}\PY{o}{.}\PY{n}{T}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{missing\PYZus{}stats}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n}{target\PYZus{}column}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{na\PYZus{}stats} \PY{o}{=} \PY{n}{missing\PYZus{}stats}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n}{target\PYZus{}column}\PY{p}{)}\PY{o}{.}\PY{n}{unstack}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{(}\PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{both}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{na\PYZus{}stats}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{background\PYZus{}gradient}\PY{p}{(}\PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{viridis}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} <pandas.io.formats.style.Styler at 0x7f14ecc884e0>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{na\PYZus{}more\PYZus{}stats} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{left}\PY{o}{=}\PY{n}{na\PYZus{}stats}\PY{o}{.}\PY{n}{droplevel}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{columns}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{right}\PY{o}{=}\PY{n}{variables}\PY{p}{,} \PY{n}{left\PYZus{}index}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{right\PYZus{}on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{imputable} \PY{o}{=} \PY{n}{na\PYZus{}more\PYZus{}stats}\PY{p}{[}\PY{n}{na\PYZus{}more\PYZus{}stats}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mf}{0.4}\PY{p}{]}
+         \PY{n}{imputable}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:}            0         1     Total                     name  \textbackslash{}
+         42  0.330526  0.383420  0.339458                  fs\_meat   
+         48  0.370526  0.367876  0.370079  med\_portion\_sickinjured   
+         
+                                                     detail  ignore  dummy  target  
+         42    Number of times ate meat or fish (last week)   False  False   False  
+         48  Proportion of household sick/injured (1 month)   False  False   False  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{k}{def} \PY{n+nf}{impute\PYZus{}by\PYZus{}group}\PY{p}{(}\PY{n}{dataframe}\PY{p}{,} \PY{n}{grouping}\PY{p}{,} \PY{n}{imputed\PYZus{}column}\PY{p}{,} \PY{n}{transform\PYZus{}fn}\PY{p}{)}\PY{p}{:}
+             \PY{n}{reference} \PY{o}{=} \PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{n}{grouping}\PY{p}{)}\PY{p}{[}\PY{n}{imputed\PYZus{}column}\PY{p}{]}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{transform\PYZus{}fn}\PY{p}{)}\PY{p}{)}
+             
+             \PY{k}{return} \PY{n}{dataframe}\PY{p}{[}\PY{n}{imputed\PYZus{}column}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{reference}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{df}\PY{p}{[}\PY{n}{imputable}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{n}{impute\PYZus{}by\PYZus{}group}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hhsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{imputable}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{median}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{df}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{columns}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{category\PYZus{}columns}\PY{p}{:}
+             \PY{k}{if} \PY{n}{col} \PY{o+ow}{in} \PY{n}{df}\PY{p}{:}
+                 \PY{n}{df}\PY{p}{[}\PY{n}{col}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{category}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{dummies} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{get\PYZus{}dummies}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{day\PYZus{}of\PYZus{}week}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{add\PYZus{}prefix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{day\PYZus{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{n}{rest} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{day\PYZus{}of\PYZus{}week}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{p}{[}\PY{n}{rest}\PY{p}{,} \PY{n}{dummies}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{n}{X} \PY{o}{=} \PY{n}{df}
+         \PY{n}{y} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{n}{target\PYZus{}column}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{,} \PY{n}{y}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}49}]:} ((1143, 48), (1143,))
+\end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
